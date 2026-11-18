@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pulse | Real-time Analytics</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="/dashboard.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar"><div class="brand"><span class="brand-mark">P</span><span>pulse<span class="muted">/analytics</span></span></div><div class="side-label">WORKSPACE</div><div class="nav active">▦ &nbsp; Overview</div><div class="nav">◷ &nbsp; Live events</div><div class="nav">◈ &nbsp; Reports</div><div class="side-bottom"><span class="live-dot"></span> Streaming demo active</div></aside>
+    <main class="main">
+      <header class="topbar"><div><div class="eyebrow">ANALYTICS / OVERVIEW</div><h1>Real-time overview</h1><p class="sub">Monitor user activity as it happens.</p></div><div class="status"><span class="live-dot"></span> LIVE <span id="last-updated">Waiting for events…</span></div></header>
+      <section class="metrics">
+        <article class="metric"><div class="metric-label">TOTAL EVENTS</div><div class="metric-value" id="total-events">0</div><div class="metric-foot">All events received</div></article>
+        <article class="metric"><div class="metric-label">UNIQUE USERS</div><div class="metric-value" id="active-users">0</div><div class="metric-foot">In recent event window</div></article>
+        <article class="metric"><div class="metric-label">PURCHASES</div><div class="metric-value" id="purchases">0</div><div class="metric-foot">Purchase events detected</div></article>
+        <article class="metric"><div class="metric-label">DEMO REVENUE</div><div class="metric-value" id="revenue">$0.00</div><div class="metric-foot">From simulated purchases</div></article>
+      </section>
+      <section class="panel chart-panel"><div class="panel-heading"><div><h2>Event activity</h2><p>Incoming events over the last few minutes</p></div><span class="pill">LIVE STREAM</span></div><div class="chart-wrap"><canvas id="activity-chart"></canvas></div></section>
+      <section class="lower"><div class="panel breakdown"><div class="panel-heading"><div><h2>Event breakdown</h2><p>Distribution by event type</p></div></div><div class="chart-wrap doughnut-wrap"><canvas id="type-chart"></canvas></div></div>
+      <div class="panel events-panel"><div class="panel-heading"><div><h2>Live event feed</h2><p>Most recently received activity</p></div><span class="count" id="feed-count">0</span></div><div class="table-wrap"><table><thead><tr><th>EVENT</th><th>USER</th><th>PAGE</th><th>TIME</th></tr></thead><tbody id="event-feed"><tr><td colspan="4" class="empty">Waiting for incoming events…</td></tr></tbody></table></div></div></section>
+      <footer>Pulse Analytics Demo <span>Simulated event data · Not production telemetry</span></footer>
+    </main>
+  </div>
+</body>
+</html>
